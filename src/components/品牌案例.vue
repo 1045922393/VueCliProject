@@ -2,10 +2,10 @@
   <div id="app">
     <div class="add">
       编号:
-      <input type="text" />
+      <input type="text" v-fontsize="'red'" v-model="brand.id" />
       品牌名称:
-      <input type="text" />
-      <input type="button" />
+      <input type="text" v-autoFocus v-model="brand.name" />
+      <input @click="addBrand" type="button" value="添加" />
     </div>
     <div class="add">
       品牌名称:
@@ -28,8 +28,11 @@
             <td>{{val.createDay|timeFormat('/')}}</td>
             <!-- |timeFormat('-') -->
             <td>
-              <a href="#">删除</a>
+              <a href="#" @click.prevent="delBrand(index)">删除</a>
             </td>
+          </tr>
+          <tr v-show="list.length===0">
+            <td colspan="4">没有数据</td>
           </tr>
         </tbody>
       </table>
@@ -38,13 +41,26 @@
 </template>
 <script>
 export default {
+  methods: {
+    addBrand() {
+      this.brand.createDay = new Date();
+      this.list.push({ ...this.brand });
+    },
+    delBrand(delIndex) {
+      this.list.splice(delIndex, 1);
+    }
+  },
   data() {
     return {
+      brand: {
+        name: "",
+        id: ""
+      },
       list: [
         {
           id: 1,
           name: "中华小当家",
-          createDay: "Sun Aug 18 2020 09:37:33"
+          createDay: "Sun Aug 18 2000 09:37:33"
         },
         {
           id: 2,
@@ -67,22 +83,24 @@ export default {
   //自定义过滤器
   filters: {
     timeFormat: function(el, spa) {
-      let date = new Date();
-      let getYear = date.getFullYear(el);
-      let getMonth = date.getMonth(el) + 1;
-      let getDate = date.getDate(el);
-      let getHours = date.getHours(el);
+      let date = new Date(el);
+      let getYear = date.getFullYear();
+      let getMonth = date.getMonth() + 1;
+      let getDate = date.getDate();
+      let getHours = date.getHours();
       return `${getYear}${spa}${
         getMonth < 10 ? "0" + getMonth : getMonth
-      }${spa}${getDate} ${getHours}`;
+      }${spa}${getDate < 10 ? "0" + getDate : getDate} ${
+        getHours < 10 ? "0" + getHours : getHours
+      }`;
       /**
        * 过滤器的使用
        * filters下包含规则,规则是函数,函数的返回值就是代替原来数据的内容
        */
     }
-  },
+  }
   //自定义命令
-  directives: {}
+  //directives: {}
 };
 </script>
 <style lang="less" scoped>

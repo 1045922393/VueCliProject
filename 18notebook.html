@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+        computed和methods的区别
+            computed有缓存,第一此调用会触发,后面再调用不触发,直接return结果
+            而methods则是每次调用函数名则出触发一次
+
+        普通侦听--基本类型的侦听
+            watch
+
+        深度侦听--引用类型
+            方法1   每个属性值都侦听
+            wathc:{
+                currentObj:{
+                    handler(newV,oldV){
+                            //但是newV和oldV都是指向同一个对象
+                    },
+                    deep:true
+                }
+            }
+            方法2:  
+            watch:{
+                "currentObj.name"(newV,oldV){
+                    //这两个是
+                }
+            }
+
+        动画
+            用有name属性的transition标签包裹需要添加过度动画的元素
+            v-enter v-enter-to  v-enter-active
+            v-leave v-leave-to  v-leave-active
+
+        axios
+            下载引入
+            import axios form "axios"
+            Vue.use(axios)
+            Vue.use(Vueaxios,axios)
+            Vue.__proto__.$axios=axios
+            get请求
+                无参
+                axios.get(url)
+                .then((response)=>{})       //成功
+                .catch((error)=>{})         //失败
+                带参数
+                axios.get(url,{params:{id:9}})
+                .then((response)=>{})
+                .catch((error)=>{})
+            post请求
+                axios.post(url,{id:1})
+                .then(()=>{})
+                .catch(()=>{})
+        
+        promise
+            解决回调地狱
+            Promise构造函数
+            使用过程
+            let p1 = new Promise((resolev,reject)=>{
+                reject()//失败的回调函数
+                resolve()//成功的回调函数
+            })
+
+            调用promise通过.then().catch()
+
+    </pre>
+</body>
+
+</html>
