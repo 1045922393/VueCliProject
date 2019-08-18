@@ -9,7 +9,7 @@
     </div>
     <div class="add">
       品牌名称:
-      <input type="text" placeholder="请输入搜索条件" />
+      <input type="text" placeholder="请输入搜索条件" v-model="key" />
     </div>
     <div>
       <table class="tb">
@@ -22,7 +22,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(val,index) in list" :key="index">
+          <tr v-for="(val,index) in search" :key="index">
             <td>{{val.id}}</td>
             <td>{{val.name}}</td>
             <td>{{val.createDay|timeFormat('/')}}</td>
@@ -31,7 +31,7 @@
               <a href="#" @click.prevent="delBrand(index)">删除</a>
             </td>
           </tr>
-          <tr v-show="list.length===0">
+          <tr v-show="search.length===0">
             <td colspan="4">没有数据</td>
           </tr>
         </tbody>
@@ -41,6 +41,14 @@
 </template>
 <script>
 export default {
+  computed: {
+    search() {
+      let arr = this.list.filter(val => {
+        return val.name.indexOf(this.key) !== -1;
+      });
+      return arr;
+    }
+  },
   methods: {
     addBrand() {
       this.brand.createDay = new Date();
@@ -52,6 +60,7 @@ export default {
   },
   data() {
     return {
+      key: "",
       brand: {
         name: "",
         id: ""
