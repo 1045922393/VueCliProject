@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import animate from "@/styles/Animate.css";
-window.console.log(animate)
+import "@/styles/Animate.css";
 Vue.config.productionTip = true
 
 //自定义全局组件,到时候 <input type="text" v-autoFocus /> 即可

@@ -48,7 +48,7 @@
             }
 
         动画
-        用有name属性的transition标签包裹需要添加过度动画的元素
+        方法1:用有name属性的transition标签包裹需要添加过度动画的元素
             v-enter     enter-class
             v-enter-to      enter-to-class
             v-enter-active  enter-active-class
@@ -57,13 +57,13 @@
             v-leave-active  leave-active-class
             设置了name之后就再style标签下用.name-enter来设置样式
 
-        第三方动画css库使用animate.css
-        template enter-active-class="animated bounce"
+        方法2:第三方动画css库使用animate.css
+        <template enter-active-class="animated bounce"><p></p></template>
         template leave-active-class="animated bounce"
         template里面还需要再有标签
 
-        钩子函数实现过渡
-            &lt;<transition v-on:before-enter="beforeEnter">&gt;  //v-on触发事件,注册事件函数
+        方法3:钩子函数实现过渡
+            <transition v-on:before-enter="beforeEnter">  //v-on触发事件,注册事件函数
             八个过渡效果钩子函数的六个
             v-on:before-enter="beforeEnter"
             v-on:enter="enter"
