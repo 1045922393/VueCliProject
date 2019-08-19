@@ -11,39 +11,75 @@
 <body>
     <pre>
         computed和methods的区别
-            computed有缓存,第一此调用会触发,后面再调用不触发,直接return结果
+            computed有缓存,第一此调用会触发,后面再调用不触发,直接return上一次结果
+            官方描述:计算属性是基于它们的响应式依赖进行缓存的,只在相关响应式依赖发生改变时它们才会重新求值
             而methods则是每次调用函数名则出触发一次
 
+        计算属性与侦听器区别
+            计算属性无法响应异步操作,无法监听异步操作时依赖项的数据变化
+            计算属性人为调用,侦听器无法调用,当存在便自动调用
+
+        目前为止,需要甄别好
+        计算属性,方法函数,侦听器的各种区别
+
         普通侦听--基本类型的侦听
-            watch
+            watch:{
+                需要侦听的属性名(修改后的值,修改前的值){
+                    //需要侦听的属性名与侦听的函数名保持一致
+                    //两个位置固定的值
+                }
+            }
 
         深度侦听--引用类型
             方法1   每个属性值都侦听
             wathc:{
                 currentObj:{
                     handler(newV,oldV){
-                            //但是newV和oldV都是指向同一个对象
+                            //但是newV和oldV都是指向同一个对象,都是引用类型
                     },
                     deep:true
                 }
             }
             方法2:  
             watch:{
-                "currentObj.name"(newV,oldV){
-                    //这两个是
+                "currentObj.name"(newV,oldV){       //名字不允许带点的,所有需要有字符串引起来
+                    //这两个是形参时基本类型
                 }
             }
 
         动画
-            用有name属性的transition标签包裹需要添加过度动画的元素
-            v-enter v-enter-to  v-enter-active
-            v-leave v-leave-to  v-leave-active
+        用有name属性的transition标签包裹需要添加过度动画的元素
+            v-enter     enter-class
+            v-enter-to      enter-to-class
+            v-enter-active  enter-active-class
+            v-leave     leave-class
+            v-leave-to  leave-to-class
+            v-leave-active  leave-active-class
+            设置了name之后就再style标签下用.name-enter来设置样式
+
+        第三方动画css库使用animate.css
+        template enter-active-class="animated bounce"
+        template leave-active-class="animated bounce"
+        template里面还需要再有标签
+
+        钩子函数实现过渡
+            &lt;<transition v-on:before-enter="beforeEnter">&gt;  //v-on触发事件,注册事件函数
+            八个过渡效果钩子函数的六个
+            v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+            v-on:after-enter="afterEnter"
+            v-on:before-leave="beforeLeave"
+            v-on:leave="leave"
+            v-on:after-leave="afterLeave"
+            然后再methods下注册函数 beforeEnter enter afterEnter beforeLeave  leave afterLeave
+            每个事件都有一个且第一个形参指向动画效果的元素el
+            而enter和leave有第二个形参是回调函数done(可选)
+
 
         axios
             下载引入
             import axios form "axios"
             Vue.use(axios)
-            Vue.use(Vueaxios,axios)
             Vue.__proto__.$axios=axios
             get请求
                 无参
@@ -62,14 +98,37 @@
         promise
             解决回调地狱
             Promise构造函数
-            使用过程
-            let p1 = new Promise((resolev,reject)=>{
-                reject()//失败的回调函数
-                resolve()//成功的回调函数
-            })
+            使用过程:(异步过程)
+                let p1 = new Promise((resolev,reject)=>{
+                    reject()//失败的回调函数
+                    resolve()//成功的回调函数
+                })
+                p1.then((data)=>{
+                    console.log(data)
+                    return p2;
+                })
+                .then((data2)=>{
+                    console.log(data2)
+                    return p3
+                })
+                .then((data3)=>{
+                    console.log(data3)
+                })
+                .catch((err)=>{
+                    console.log(err)
+                })
 
             调用promise通过.then().catch()
 
+    axios()基于promise来实现.then().catch()
+
+    axios({
+        url:请求路径
+        method:get和post
+        baseURL:自动提供基准路径,一般ip加端口
+        params:get或delete以对象方式传递参数的包含属性
+        data:post或put以对象方式传递参数的包含属性
+    })
     </pre>
 </body>
 

@@ -8,7 +8,11 @@
 
 <script>
 // import HelloWorld from "./components/HelloWorld.vue";
-import brandShow from "./components/品牌案例.vue";
+// import brandShow from "./components/品牌案例.vue";
+// import brandShow from "./components/品牌案例侦听器";
+// import brandShow from "./components/过渡效果";
+import brandShow from "./components/样式库的使用.vue";
+import "@/styles/Animate.css";
 
 export default {
   name: "app",
