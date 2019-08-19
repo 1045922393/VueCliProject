@@ -1,26 +1,22 @@
 <template>
   <div id="app">
-    <p>我是根目录</p>
-    <div>
-      <router-link to="/index">切换至主页</router-link>
-    </div>
-    <div>
-      <router-link to="/detail/1">切换至详细页1</router-link>
-    </div>
-    <div>
-      <router-link to="/detail/2">切换至详细页2</router-link>
-    </div>
-    <div>
-      <router-link to="/detail/3">切换至详细页3</router-link>
-    </div>
+    <p>我是一个根目录</p>
+    <router-link to="/index">主页</router-link>
+    <br />
+    <router-link to="/detail">详细页</router-link>
+    <br />
+    <router-link to="/detail/1">详细页1</router-link>
+    <br />
+    <router-link to="/detail/2">详细页2</router-link>
+    <br />
+    <router-link to="/detail/3">详细页3</router-link>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: "app",
-  components: {}
+  name: "app"
 };
 </script>
 

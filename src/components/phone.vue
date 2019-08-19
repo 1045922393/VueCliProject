@@ -1,10 +1,15 @@
 <template>
-  <h1>我是主页</h1>
+  <div>
+      <h1>手机</h1>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+
+}
 </script>
 
 <style>
+
 </style>

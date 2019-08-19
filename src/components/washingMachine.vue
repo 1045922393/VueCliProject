@@ -1,5 +1,7 @@
 <template>
-  <h1>我是主页</h1>
+  <div>
+    <h1>我是洗衣机</h1>
+  </div>
 </template>
 
 <script>
