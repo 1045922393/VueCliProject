@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+        vue的路由
+        下载    npm install vue-router
+        引入    import VueRouter from "vue-router"
+        设置中间件  Vue.use(VueRouter)
+        new VueRouter({
+            routes:[
+                {
+                    name:路由名字,
+                    path:路由访问url,
+                    component:组件对象, //如果此组件对象是单文件组件,则需要先引入
+                    redirect:{name:'重定向路由名字'}    //或者之间写入路由访问url字符串
+                }
+            ]
+        })
+        new Vue({
+            router:router
+        }) 
+    </pre>
+</body>
+
+</html>
