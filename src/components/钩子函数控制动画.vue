@@ -23,40 +23,39 @@ export default {
   },
   methods: {
     beforeEnter(el) {
-      window.console.log(1);
+      // window.console.log(1);
       el.style.transform = "translateX(200px)";
-      el.style.transition = "all 1s";
+      // el.style.transition = "all 1s";
     },
 
-    enter(el, done) {
-      window.console.log(2);
+    enter(el) {
+      // window.console.log(2);
 
       //   el.style.offetWidth;
       //   el.style.transform = "translateX(-200px)";
       el.style.transition = "all 1s";
-      done();
     },
 
     afterEnter(el) {
       //   window.console.log(3);
       el.style.transform = "translateX(-200px)";
-      el.style.transition = "all 1s";
+      // el.style.transition = "all 1s";
       //   this.show = true;
     },
     beforeLeave(el) {
-      window.console.log(1);
-      el.style.transform = "translateX(200px)";
+      // window.console.log(1);
+      el.style.transform = "translateX(-200px)";
       //   el.style.opacity = "1";
     },
-    leave(el, done) {
-      el.style.offetWidth;
-      el.style.transform = "translateX(-200px)";
+    leave(el) {
+      // el.style.offetWidth;
+      // el.style.transform = "translateX(-200px)";
       el.style.transition = "all 1s";
-      done();
+      // done();
     },
     afterLeave(el) {
       //   el.style.opacity = "0";
-      el.style.transform = "translateX(-200px)";
+      el.style.transform = "translateX(200px)";
       //   this.show = true;
     }
   }

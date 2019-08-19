@@ -11,8 +11,8 @@
 // import brandShow from "./components/品牌案例.vue";
 // import brandShow from "./components/品牌案例侦听器";
 // import brandShow from "./components/过渡效果";
-import brandShow from "./components/样式库的使用.vue";
-// import brandShow from "./components/钩子函数控制动画";
+// import brandShow from "./components/样式库的使用.vue";
+import brandShow from "./components/钩子函数控制动画";
 
 export default {
   name: "app",
