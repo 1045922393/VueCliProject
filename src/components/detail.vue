@@ -107,7 +107,8 @@ export default {
           this.$router.push({
             name: "detailFirst",
             params: {
-              id: 1,
+              //将参数挂载在$router身上
+              id: 5,
               name: "computer",
               querstion: "不知道,不晓得"
               //传入的参数在被显示的组件中可以通过$route查看

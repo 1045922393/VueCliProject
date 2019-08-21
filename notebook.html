@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+        父组件与子组件以使用关系建立
+
+        在父组件引入了子组件后,需要在键components中注册子组件的标签使用
+
+        父组件传数据给子组件的方式
+        在父.vue中,标签内传入数据<son :sname="变量"></son>
+        在子.vue中,有类似data的内置成员props(值是数组):['sname']
+
+        子组件传数据给父组件的方式
+        在子.vue的按钮中添加事件,发出数据   this.$emit(事件名称A,任意数据)
+        在父.vue使用<son @事件名称A=函数名B></son>   在内置成员methods注册函数  函数名B(任意数据){函数体}
+
+        同级组件间传数据方式:A->B:
+        封装一个第三方Vue实例,在A.vue和B.vue中引入,此实例成为eventBus(事件总线)
+        在A.vue的按钮事件eventBus.$emit('事件名称C',任意数据)
+        在B.vue的mounted注册监听函数    eventBus.$on('事件名称C',(任意数据)=>{处理函数})
+
+            
+        
+    </pre>
+</body>
+
+</html>

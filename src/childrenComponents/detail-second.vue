@@ -5,7 +5,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  watch: {
+    //监听的是route
+    $route() {
+      window.console.log(this.$router);
+      window.console.log(this.$route);
+    }
+  },
+  mounted() {
+    window.console.log(this.$route);
+    window.console.log(this.$router);
+  }
+};
 </script>
 
 <style>
